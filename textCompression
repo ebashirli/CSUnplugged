@@ -1,0 +1,18 @@
+with open('story.txt') as a:
+	s = a.read()
+unCompLength = len(s)
+
+i = int(len(s)/2)
+
+while i >= 2:
+    j = 0
+    while j + i + i <= len(s):
+        a = s[: i+j]
+        b = s[i+j : i+j+i]
+        if b in a:
+          s = s[: i+j] + s[i+j+i:]
+        j+=1
+        
+    i-=1
+print(unCompLength - len(s))
+print(s)
