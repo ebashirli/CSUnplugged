@@ -1,18 +1,43 @@
-with open('story.txt') as a:
-	s = a.read()
-unCompLength = len(s)
+# Sışxıdırılmaq istənilən mətn
+mtn = '''
+Biri var idi, biri yox idi, uzun illər əvvəl üç balaca donuz öz sərvətlərini yığmağa qərar verdilər. Birinci balaca donuz çox da ağıllı deyildi, ona görə də o öz evini samandan tikməyə qərar verdi, çünki saman çox ucuz idi. İkinci balaca donuz da çox da ağıllı deyildi, o isə öz evini çubuqdan tikməyə qərar verdi, çünki evin "təbii" görünüşü hətta o günlərdə belə modda idi. Üçüncü balaca donuz o biri qardaşlarından çox daha ağıllı idi, ona görə də yaxınlıqdakı şəhərdən bir xeyli kərpic aldı və bu kərpiclərlə möhkəm, amma rahat bir kənd ev inşa etdi.
+Evgördü qonaqlığından bir az keçmişdi ki, birinci balaca donuz stulda oturub kitab oxuyarkən qapını kimsə döydü. Təbii ki, bu böyük yırtıcı canavar idi.
+"Balaca donuz, balaca donuz, qapını aç, qoy girim içəri!" - canavar bağırdı.
+"And ola saqqalımın hər telinə, açmayacağam!" - birinci balaca donuz çığırdı.
+"Onda mən də haff eləyib, puff eləyib evini havaya sovuracağam!" - canavar kükrəyib haff elədi, puff elədi, elə o saat da ev çökdü. Balaca donuz bacardığı qədər sürətlə çubuq evə qaçıb tez onun içində gizləndi. Aman çəkmədi ki, canavar buraya gəlib yenidən çağırmağa başladı.
+"Balaca donuz, balaca donuz, qapını aç, qoy girim içəri!" - canavar bağırdı.
+"And ola saqqalımın hər telinə, açmayacağam!" - ikinci balaca donuz çığırdı.
+"Onda mən də haff eləyib, puff eləyib evini havaya sovuracağam!" - canavar kükrəyib haff elədi, puff elədi, elə o saat da ev odun qalağına çevrildi. Qorxmuş balaca donuzlar öz qardaşlarının kərpic evinə gedən yolu axıra kimi qaçdılar, ancaq ki, canavar da onların dalınca qaçıb qapının qarşısında dayandı.
+"Balaca donuz, balaca donuz, qapını aç, qoy girim içəri!" - canavar bağırdı.
+"And ola saqqalımın hər telinə, açmayacağam!" - üçüncü balaca donuz çığırdı.
+"Onda mən də haff eləyib, puff eləyib evini havaya sovuracağam!" - canavar kükrəyib haff elədi, puff elədi, sonra yenə haff elədi, ancaq təbii ki, ev kərpicdən tikilmişdi və çox keçmədi ki, canavar təngnəfəs oldu. Sonra onun ağlına bir fikir gəldi: “Baca!” O hündür bir palıd ağacına dırmaşıb evin damına keçdi, ancaq orda baca filan yox idi, çünki üçüncü balaca donuz, havaların necə keçdiyini bilirdi deyə evə elektrik qızdırıcısı quraşdırmışdı. Məyusluq içində damdan aşağı sürüşən canavarın sol qıçı sındı və həm də onun qüruru da dəhşət incimişdi. Canavar uzaqlaşarkən donuzlar gülürdü və bu zaman şəhərdə yaşamağın necə ağıllı iş olduğunu başa düşdülər, çünki şəhərdə canavarlar ancaq zooparkda olur. Və beləliklə göydən üç alma düşdü.
+'''
 
-i = int(len(s)/2)
+# Mətnin sıxıışdırılmamış uzunluğu
+uz = len(mtn)
+
+# Mətnin sıxıışdırılmamış uzunluğunun yarısının tam hissəsi
+i = int(uz/2)
 
 while i >= 2:
+    # Əvvəldə olub-olmadığının yoxlanması üçün götürülmüş mətn hissəsinin ilk indeksi
     j = 0
-    while j + i + i <= len(s):
-        a = s[: i+j]
-        b = s[i+j : i+j+i]
+    while 2 * i + j <= len(mtn):
+        # Mətnin əvvəlindən əvvəldə olub-olmadığının yoxlanması üçün götürülmüş mətn hissəsinin son indeksinədək olan mətn hissəsi
+        a = mtn[: i + j]
+	
+	# Əvvəldə olub-olmadığının yoxlanması üçün götürülmüş mətn hissəsi
+        b = mtn[i+j : 2 * i + j]
         if b in a:
-          s = s[: i+j] + s[i+j+i:]
+          mtn = mtn[: i+j] + mtn[i+j+i:]
         j+=1
-        
     i-=1
-print(unCompLength - len(s))
-print(s)
+
+# Mətnin sıxıışdırılmamış uzunluğu
+print('Mətnin sıxıışdırılmamış uzunluğu: ', uz)
+
+# Silinmiş simvol sayını çap et
+print('Silinmiş simvol sayı: ', uz - len(mtn))
+
+# Sıxışdırılmış mətni çap et
+print('Sıxışdırılmış mətn:\n', mtn)
